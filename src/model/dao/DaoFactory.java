@@ -1,5 +1,6 @@
 package model.dao;
 
+import db.DB;
 import model.dao.impl.DepartmentDaoJDBC;
 import model.dao.impl.SellerDaoJDBC;
 import org.jetbrains.annotations.Contract;
@@ -9,7 +10,7 @@ public class DaoFactory {
 
     @Contract(value = " -> new", pure = true)
     public static @NotNull SellerDao createSellerDao() {
-        return new SellerDaoJDBC();
+        return new SellerDaoJDBC(DB.getConnection());
     }
 
     @Contract(value = " -> new", pure = true)
